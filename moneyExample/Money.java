@@ -1,24 +1,55 @@
 package moneyExample;
 
 public class Money {
+    protected int amount;
+    protected String currency;
 
-    public Money(int i, String string) {
-        //TODO Auto-generated constructor stub
+    protected Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
     }
 
     public int getAmount() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAmount'");
+        return amount;
     }
 
-    public Object getCurrency() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCurrency'");
+    public String currency() {
+        return currency;
+    }
+    public Money add(Money other) {
+        if (!this.currency.equals(other.currency())) {
+            throw new IllegalArgumentException("Cannot add amounts with different currencies: " + this.currency + " vs " + other.currency());
+        }
+        return create(this.amount + other.getAmount(), this.currency);
+    }
+    public Money times(int multiplier) {
+        return create(amount * multiplier, currency);
     }
 
-    public Money add(Money money2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    public static Money dollar(int amount) {
+        return new Dollar(amount);
     }
 
+    public static Money franc(int amount) {
+        return new Franc(amount);
+    }
+
+    public static Money create(int amount, String currency) {
+        if ("USD".equals(currency)) return new Dollar(amount);
+        if ("CHF".equals(currency)) return new Franc(amount);
+        return new Money(amount, currency);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Money money = (Money) obj;
+        return amount == money.amount && currency.equals(money.currency);
+    }
+
+    @Override
+    public String toString() {
+        return "$" + amount;
+    }
 }

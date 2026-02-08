@@ -13,7 +13,21 @@ public class MoneyTest {
     public void testMoneyCreation() {
         Money money = new Money(100, "USD");
         assert money.getAmount() == 100;
-        assert money.getCurrency().equals("USD");
+        assert money.currency().equals("USD");
+    }
+
+    @Test
+    public void testMoneyCurrencyUSD() {
+        Money money = new Money(100, "USD");
+        String curr = money.currency();
+        assert curr.equals("USD");
+    }
+
+        @Test
+    public void testMoneyCurrencyCHF() {
+        Money money = new Money(100, "CHF");
+        String curr = money.currency();
+        curr.equals("CHF");
     }
 
     @Test
@@ -24,6 +38,6 @@ public class MoneyTest {
         Money result = money1.add(money2);
         
         assert result.getAmount() == 175;
-        assert result.getCurrency().equals("USD");
+        assert result.currency().equals("USD");
     }
 }
