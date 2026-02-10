@@ -1,5 +1,7 @@
 package moneyExample;
 
+import java.util.Objects;
+
 public class Money implements Expression {
     protected int amount;
     protected String currency;
@@ -21,22 +23,25 @@ public class Money implements Expression {
         return currency;
     }
 
-@Override
-public Money reduce(Bank bank, String toCurrency) {
-    if (currency.equals(toCurrency)) {
-        return this;
+    public static Money currency(int amount, String currency) {
+        return new Money(amount, currency);
     }
 
-    double rate = bank.getRate(currency, toCurrency);
-    int converted = (int)(amount * rate);
+    @Override
+    public Money reduce(Bank bank, String toCurrency) {
+        if (currency.equals(toCurrency)) {
+            return this;
+        }
 
-    return new Money(converted, toCurrency);
+        double rate = bank.getRate(currency, toCurrency);
+        int converted = (int) (amount * rate);
+
+        return new Money(converted, toCurrency);
+    }
+
+public Expression times(int multiplier) {
+    return new Money(amount * multiplier, currency);
 }
-
-
-    public Money times(int multiplier) {
-        return create(amount * multiplier, currency);
-    }
 
     public static Money dollar(int amount) {
         return new Dollar(amount);
@@ -58,14 +63,6 @@ public Money reduce(Bank bank, String toCurrency) {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Money money = (Money) obj;
-        return amount == money.amount && currency.equals(money.currency);
-    }
-
-    @Override
     public String toString() {
         String symbol = switch (currency) {
             case "USD" -> "$";
@@ -74,5 +71,18 @@ public Money reduce(Bank bank, String toCurrency) {
             default -> currency;
         };
         return symbol + amount;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Money)) return false;
+        Money money = (Money) object;
+        return amount == money.amount && currency().equals(money.currency());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, currency);
     }
 }
