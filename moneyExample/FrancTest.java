@@ -13,7 +13,7 @@ public class FrancTest {
     public void testMoneyCreation() {
         Franc franc = new Franc(100);
         assert franc.getAmount() == 100;
-        assert franc.toString().equals("$100");
+        assert franc.toString().equals("Fr100");
     }
 
     @Test

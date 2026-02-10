@@ -1,12 +1,16 @@
 package moneyExample;
 
-public class Money {
+public class Money implements Expression {
     protected int amount;
     protected String currency;
 
     protected Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+        public Expression plus(Expression addend) {
+        return new Sum(this, addend);
     }
 
     public int getAmount() {
@@ -16,12 +20,20 @@ public class Money {
     public String currency() {
         return currency;
     }
-    public Money add(Money other) {
-        if (!this.currency.equals(other.currency())) {
-            throw new IllegalArgumentException("Cannot add amounts with different currencies: " + this.currency + " vs " + other.currency());
-        }
-        return create(this.amount + other.getAmount(), this.currency);
+
+@Override
+public Money reduce(Bank bank, String toCurrency) {
+    if (currency.equals(toCurrency)) {
+        return this;
     }
+
+    double rate = bank.getRate(currency, toCurrency);
+    int converted = (int)(amount * rate);
+
+    return new Money(converted, toCurrency);
+}
+
+
     public Money times(int multiplier) {
         return create(amount * multiplier, currency);
     }
@@ -34,9 +46,14 @@ public class Money {
         return new Franc(amount);
     }
 
+    public static Money pound(int amount) {
+        return new Pound(amount);
+    }
+
     public static Money create(int amount, String currency) {
         if ("USD".equals(currency)) return new Dollar(amount);
         if ("CHF".equals(currency)) return new Franc(amount);
+        if ("GBP".equals(currency)) return new Pound(amount);
         return new Money(amount, currency);
     }
 
@@ -50,6 +67,12 @@ public class Money {
 
     @Override
     public String toString() {
-        return "$" + amount;
+        String symbol = switch (currency) {
+            case "USD" -> "$";
+            case "CHF" -> "Fr";
+            case "GBP" -> "£";
+            default -> currency;
+        };
+        return symbol + amount;
     }
 }
