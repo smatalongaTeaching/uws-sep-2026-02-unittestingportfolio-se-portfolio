@@ -29,6 +29,7 @@ public class BankTest {
         assert result.currency().equals("USD");
     }
 
+    //Banktest methods
     @Test
         public void testAddDifferentCurrencies() {
             Bank bank = new Bank();
