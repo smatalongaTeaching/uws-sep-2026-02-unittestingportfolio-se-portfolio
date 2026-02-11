@@ -2,13 +2,14 @@ package moneyExample;
 
 public class Money {
 
-    public Money(int i, String string) {
-        //TODO Auto-generated constructor stub
+    public final int amount;
+
+    public Money(int amount) {
+        this.amount = amount;
     }
 
     public int getAmount() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAmount'");
+        return amount;
     }
 
     public Object getCurrency() {

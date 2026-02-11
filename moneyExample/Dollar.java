@@ -1,26 +1,13 @@
 package moneyExample;
 
-public class Dollar {
-    private final int amount;
+public class Dollar extends Money {
 
     public Dollar(int amount) {
-        this.amount = amount;
-    }
-
-    public int getAmount() {
-        return amount;
+        super(amount);
     }
 
     public Dollar times(int multiplier) {
         return new Dollar(amount * multiplier);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Dollar dollar = (Dollar) obj;
-        return amount == dollar.amount;
     }
 
 }
