@@ -1,5 +1,7 @@
 package moneyExample;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,5 +43,6 @@ public class Bank {
     public Money convert(Expression source, String toCurrency) {
         return source.reduce(this, toCurrency);
     }
+
 
 }

@@ -40,6 +40,13 @@ public abstract class Money implements Expression {
         return bank.convert(this, toCurrency);
     }
 
+    @Override
+    public Expression times(int multiplier) {
+        if ("USD".equals(getCurrency())) return Money.dollar(amount * multiplier);
+        if ("CHF".equals(getCurrency())) return Money.franc(amount * multiplier);
+        throw new IllegalArgumentException("Unsupported currency: " + getCurrency());
+    }
+
 
 }
 

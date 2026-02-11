@@ -78,5 +78,35 @@ class BankTest {
         assertEquals(Money.dollar(20), result);
     }
 
+    @Test
+    void testMixedOperationsDifferentCurrencies() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+
+        Expression expr =
+            Money.dollar(5)
+                .plus(Money.franc(10))
+                .times(2) 
+                .plus(Money.dollar(5)); 
+
+        Money result = bank.convert(expr, "USD");
+        assertEquals(Money.dollar(25), result);
+    }
+
+    @Test
+    void testZeroAmountAddition() {
+        Bank bank = new Bank();
+        Money result = bank.convert(Money.dollar(0).plus(Money.dollar(0)), "USD");
+        assertEquals(Money.dollar(0), result);
+    }
+
+    @Test
+    void testEqualExchangeRateDoesNotChangeAmount() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 1);
+        Money result = bank.convert(Money.franc(5), "USD");
+        assertEquals(Money.dollar(5), result);
+    }
+
 
 }
