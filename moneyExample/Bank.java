@@ -37,4 +37,9 @@ public class Bank {
     private String key(String fromCurrency, String toCurrency) {
         return fromCurrency + "->" + toCurrency;
     }
+
+    public Money convert(Expression source, String toCurrency) {
+        return source.reduce(this, toCurrency);
+    }
+
 }

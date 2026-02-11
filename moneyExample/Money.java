@@ -1,6 +1,6 @@
 package moneyExample;
 
-public abstract class Money {
+public abstract class Money implements Expression {
 
     protected final int amount;
 
@@ -29,6 +29,16 @@ public abstract class Money {
         Money other = (Money) obj;
         return amount == other.amount && getCurrency().equals(other.getCurrency());
     }
+
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
+    @Override
+    public Money reduce(Bank bank, String toCurrency) {
+        return bank.convert(this, toCurrency);
+    }
+
 
 }
 
