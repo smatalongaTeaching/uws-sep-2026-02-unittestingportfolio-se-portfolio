@@ -3,10 +3,15 @@ package moneyExample;
 public class Franc extends Money {
 
     public Franc(int amount) {
-        super(amount, "CHF");
+        super(amount);
     }
 
-    public Franc multiplyFranc(int multiplier) {
-        return new Franc(getAmount() * multiplier);
+    public Franc times(int multiplier) {
+        return new Franc(amount * multiplier);
+    }
+
+    @Override
+    public String getCurrency() {
+        return "CHF";
     }
 }
