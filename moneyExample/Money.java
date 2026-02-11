@@ -1,10 +1,10 @@
 package moneyExample;
 
-public class Money {
+public abstract class Money {
 
-    public final int amount;
+    protected final int amount;
 
-    public Money(int amount) {
+    protected Money(int amount) {
         this.amount = amount;
     }
 
@@ -12,14 +12,6 @@ public class Money {
         return amount;
     }
 
-    public Object getCurrency() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCurrency'");
-    }
-
-    public Money add(Money money2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
-    }
-
+    public abstract String getCurrency();
 }
+
