@@ -3,6 +3,8 @@ package moneyExample;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.beans.Expression;
+
 class BankTest {
 
     @Test
@@ -20,5 +22,16 @@ class BankTest {
         Money result = bank.convert(Money.franc(2), "USD");
         assertEquals(Money.dollar(1), result);
     }
+
+    @Test
+    void testAdditionSameCurrency() {
+        Bank bank = new Bank();
+
+        Expression sum = Money.dollar(5).plus(Money.dollar(5));
+        Money result = bank.convert(sum, "USD");
+
+        assertEquals(Money.dollar(10), result);
+    }
+
 
 }
