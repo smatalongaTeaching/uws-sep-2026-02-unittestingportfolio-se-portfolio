@@ -12,14 +12,20 @@ public class Sum implements Expression {
 
     @Override
     public Money reduce(Bank bank, String toCurrency) {
-        Money reducedAugend = bank.convert((Money) augend, toCurrency);
-        Money reducedAddend = bank.convert((Money) addend, toCurrency);
+        Money a = bank.convert(augend, toCurrency);
+        Money b = bank.convert(addend, toCurrency);
 
-        int total = reducedAugend.getAmount() + reducedAddend.getAmount();
+        int total = a.getAmount() + b.getAmount();
 
         if ("USD".equals(toCurrency)) return Money.dollar(total);
         if ("CHF".equals(toCurrency)) return Money.franc(total);
 
-        throw new IllegalArgumentException("Unsupported currency");
+        throw new IllegalArgumentException("Unsupported currency: " + toCurrency);
     }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
 }

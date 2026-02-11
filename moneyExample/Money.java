@@ -30,6 +30,7 @@ public abstract class Money implements Expression {
         return amount == other.amount && getCurrency().equals(other.getCurrency());
     }
 
+    @Override
     public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
