@@ -30,4 +30,4 @@ public class MoneyTest {
         curr.equals("CHF");
     }
 
-}
+} 

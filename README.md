@@ -18,3 +18,4 @@ Using the Red-Green refactor cycle I wrote 5 failing tests in Stage4IndividualTe
 I then implemented logic within Sum.java and Money.Java to make them pass
 
 I then adjusted the match in my reduce methods as the calculations were incorrect.
+
