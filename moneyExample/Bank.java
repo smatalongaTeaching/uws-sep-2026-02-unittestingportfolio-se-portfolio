@@ -30,6 +30,7 @@ public class Bank {
         // Create target Money type
         if ("USD".equals(toCurrency)) return Money.dollar(convertedAmount);
         if ("CHF".equals(toCurrency)) return Money.franc(convertedAmount);
+        if ("GBP".equals(toCurrency)) return Money.pound(convertedAmount);
 
         throw new IllegalArgumentException("Unsupported currency: " + toCurrency);
     }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import moneyExample.Dollar;
 import moneyExample.Franc;
 import moneyExample.Money;
+import moneyExample.Pound;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +20,12 @@ class MoneySuperClassTest {
     @Test
     void testFrancIsMoney() {
         Money money = new Franc(5);
+        assertEquals(5, money.getAmount());
+    }
+
+    @Test
+    void testPoundIsMoney() {
+        Money money = new Pound(5);
         assertEquals(5, money.getAmount());
     }
 }
