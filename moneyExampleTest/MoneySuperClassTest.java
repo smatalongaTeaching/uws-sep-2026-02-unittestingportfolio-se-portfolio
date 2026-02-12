@@ -1,6 +1,11 @@
-package moneyExample;
+package moneyExampleTest;
 
 import org.junit.jupiter.api.Test;
+
+import moneyExample.Dollar;
+import moneyExample.Franc;
+import moneyExample.Money;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoneySuperClassTest {
