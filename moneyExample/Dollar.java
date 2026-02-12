@@ -3,10 +3,16 @@ package moneyExample;
 public class Dollar extends Money {
 
     public Dollar(int amount) {
-        super(amount, "USD");
+        super(amount);
     }
 
-    public Dollar multiplyDollar(int multiplier) {
-        return new Dollar(getAmount() * multiplier);
+    public Dollar times(int multiplier) {
+        return new Dollar(amount * multiplier);
     }
+
+    @Override
+    public String getCurrency() {
+        return "USD";
+    }
+
 }

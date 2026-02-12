@@ -1,47 +1,18 @@
 package moneyExample;
 
-import java.util.Objects;
+public abstract class Money implements Expression {
 
-public class Money implements Expression {
-    protected int amount;
-    protected String currency;
+    protected final int amount;
 
-    protected Money(int amount, String currency) {
+    protected Money(int amount) {
         this.amount = amount;
-        this.currency = currency;
-    }
-
-        public Expression plus(Expression addend) {
-        return new Sum(this, addend);
     }
 
     public int getAmount() {
         return amount;
     }
 
-    public String currency() {
-        return currency;
-    }
-
-    public static Money currency(int amount, String currency) {
-        return new Money(amount, currency);
-    }
-
-    @Override
-    public Money reduce(Bank bank, String toCurrency) {
-        if (currency.equals(toCurrency)) {
-            return this;
-        }
-
-        double rate = bank.getRate(currency, toCurrency);
-        int converted = (int) (amount * rate);
-
-        return new Money(converted, toCurrency);
-    }
-
-public Expression times(int multiplier) {
-    return new Money(amount * multiplier, currency);
-}
+    public abstract String getCurrency();
 
     public static Money dollar(int amount) {
         return new Dollar(amount);
@@ -51,38 +22,31 @@ public Expression times(int multiplier) {
         return new Franc(amount);
     }
 
-    public static Money pound(int amount) {
-        return new Pound(amount);
-    }
-
-    public static Money create(int amount, String currency) {
-        if ("USD".equals(currency)) return new Dollar(amount);
-        if ("CHF".equals(currency)) return new Franc(amount);
-        if ("GBP".equals(currency)) return new Pound(amount);
-        return new Money(amount, currency);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Money)) return false;
+        Money other = (Money) obj;
+        return amount == other.amount && getCurrency().equals(other.getCurrency());
     }
 
     @Override
-    public String toString() {
-        String symbol = switch (currency) {
-            case "USD" -> "$";
-            case "CHF" -> "Fr";
-            case "GBP" -> "£";
-            default -> currency;
-        };
-        return symbol + amount;
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (!(object instanceof Money)) return false;
-        Money money = (Money) object;
-        return amount == money.amount && currency().equals(money.currency());
+    public Money reduce(Bank bank, String toCurrency) {
+        return bank.convert(this, toCurrency);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(amount, currency);
+    public Expression times(int multiplier) {
+        if ("USD".equals(getCurrency())) return Money.dollar(amount * multiplier);
+        if ("CHF".equals(getCurrency())) return Money.franc(amount * multiplier);
+        throw new IllegalArgumentException("Unsupported currency: " + getCurrency());
     }
+
+
 }
+

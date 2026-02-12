@@ -1,46 +1,41 @@
-
 package moneyExample;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class FrancTest {
+class FrancTest {
 
     @Test
-    public void testMoneyCreation() {
-        Franc franc = new Franc(100);
-        assert franc.getAmount() == 100;
-        assert franc.toString().equals("Fr100");
+    void testCreateFranc() {
+        Franc five = new Franc(5);
+        assertEquals(5, five.getAmount());
     }
 
     @Test
-    public void testMoneyMultiplication() {
-        Franc franc = new Franc(100);
-        Franc doubled = franc.multiplyFranc(2);
-        assert doubled.getAmount() == 200;
-    }   
-    @Test
-    public void testFrancEquality() {
-        Franc franc1 = new Franc(5);
-        Franc franc2 = new Franc(5);
-        assert franc1.equals(franc2); 
+    void testFrancMultiplication() {
+        Franc five = new Franc(5);
+        Franc result = five.times(2);
+        assertEquals(10, result.getAmount());
     }
 
     @Test
-    public void testFrancInequality() {
-        Franc franc1 = new Franc(5);
-        Franc franc2 = new Franc(10);
-        assert !franc1.equals(franc2); 
+    void testFrancIsImmutable() {
+        Franc five = new Franc(5);
+        five.times(2);
+        assertEquals(5, five.getAmount());
     }
 
     @Test
-    public void testFrancImmutability() {
-    Franc original = new Franc(5);
-    Franc doubled = original.multiplyFranc(2);
-    
-    assert original.getAmount() == 5;
-    
-    assert doubled.getAmount() == 10;
+    void testFrancEquality() {
+        assertEquals(new Franc(5), new Franc(5));
+        assertNotEquals(new Franc(5), new Franc(6));
+    }
 
-    assert original != doubled; 
-}
+    @Test
+    void testTimesReturnsNewObject() {
+        Franc five = new Franc(5);
+        Franc result = five.times(2);
+        assertNotSame(five, result);
+    }
+
 }
