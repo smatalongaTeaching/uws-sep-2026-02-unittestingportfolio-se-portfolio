@@ -21,6 +21,11 @@ class MoneyCurrencyTest {
     }
 
     @Test
+    void testPoundCurrency() { 
+        assertEquals("GBP", Money.pound(1).getCurrency()); 
+    }
+
+    @Test
     void testDollarCreatesCorrectAmount() {
         Money usd = Money.dollar(5);
         assertEquals(5, usd.getAmount());
@@ -42,6 +47,18 @@ class MoneyCurrencyTest {
     void testFrancSetsCorrectCurrency() {
         Money chf = Money.franc(5);
         assertEquals("CHF", chf.getCurrency());
+    }
+
+    @Test
+    void testPoundCreatesCorrectAmount() {
+        Money gbp = Money.pound(5);
+        assertEquals(5, gbp.getAmount());
+    }
+
+    @Test
+    void testPoundSetsCorrectCurrency() {
+        Money gbp = Money.pound(5);
+        assertEquals("GBP", gbp.getCurrency());
     }
 
     @Test

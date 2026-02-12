@@ -22,6 +22,10 @@ public abstract class Money implements Expression {
         return new Franc(amount);
     }
 
+    public static Money pound(int amount) {
+        return new Pound(amount);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -44,6 +48,7 @@ public abstract class Money implements Expression {
     public Expression times(int multiplier) {
         if ("USD".equals(getCurrency())) return Money.dollar(amount * multiplier);
         if ("CHF".equals(getCurrency())) return Money.franc(amount * multiplier);
+        if ("GBP".equals(getCurrency())) return Money.pound(amount * multiplier);
         throw new IllegalArgumentException("Unsupported currency: " + getCurrency());
     }
 
