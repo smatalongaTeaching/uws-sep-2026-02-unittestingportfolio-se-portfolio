@@ -1,6 +1,9 @@
-package moneyExample;
+package moneyExampleTest;
 
 import org.junit.jupiter.api.Test;
+
+import moneyExample.Pound;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PoundTest {
