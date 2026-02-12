@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import moneyExample.Dollar;
 import moneyExample.Franc;
 import moneyExample.Money;
-<<<<<<< HEAD
-=======
 import moneyExample.Pound;
->>>>>>> B01787017-Dean-Cain
 
 import static org.junit.jupiter.api.Assertions.*;
 
