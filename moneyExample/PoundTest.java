@@ -1,11 +1,7 @@
 
 package moneyExample;
 
-import java.beans.Transient;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
 
 public class PoundTest {
 
@@ -45,7 +41,6 @@ public class PoundTest {
     
     assert doubled.getAmount() == 10;
 
-    assert original != doubled;  // Different references in memory
+    assert original != doubled; 
 }
 }
-

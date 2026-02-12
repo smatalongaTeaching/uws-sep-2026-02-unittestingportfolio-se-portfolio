@@ -1,10 +1,6 @@
 package moneyExample;
 
-import java.beans.Transient;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
 
 public class BankTest {
 
