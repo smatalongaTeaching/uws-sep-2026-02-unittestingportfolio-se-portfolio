@@ -1,8 +1,9 @@
 # USW_SEP_UnitTesting_PortfolioExercise
 
-Pair Coursework – Test-Driven Development Portfolio.
-1.Dean Cain (B01787107)
-2.James Lough (B01794144)
+Group Coursework – Test-Driven Development Portfolio.
+1.Dean Cain (B01787107) - [https://github.com/b01787017/B01787107-DeanCain-Unit2_PortfolioExcercise.git](https://github.com/b01787017/B01787107-DeanCain-Unit2_PortfolioExcercise.git)
+2.James Lough (B01794144) -
+3.Danny Cox (B01838418) -
 
 This was completed as pair courseowkr with both contributors working on seperate feature branches, each stage was committed independently, code reviews were conducted via Pull Requests. Pull Requests were accepted or rejected based on review outcomes. Closed Pull Requests in the repository deomonstrate review activity.
 
