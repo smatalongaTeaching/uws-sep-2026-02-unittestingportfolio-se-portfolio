@@ -6,7 +6,7 @@ import java.beans.Transient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-
+//Dollar test methods
 public class DollarTest {
 
     @Test

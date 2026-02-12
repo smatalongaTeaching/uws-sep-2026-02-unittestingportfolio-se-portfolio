@@ -19,3 +19,4 @@ I then implemented logic within Sum.java and Money.Java to make them pass
 
 I then adjusted the match in my reduce methods as the calculations were incorrect.
 
+Link to individual Repo : https://github.com/smatalongaTeaching/uws-sep-2026-02-unittestingportfolio-se-portfolio/tree/B01794144-James_Lough
