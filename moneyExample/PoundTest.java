@@ -1,51 +1,41 @@
-
 package moneyExample;
 
-import java.beans.Transient;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class PoundTest {
+class PoundTest {
 
     @Test
-    public void testMoneyCreation() {
-        Pound pound = new Pound(100);
-        assert pound.getAmount() == 100;
-        assert pound.toString().equals("£100");
+    void testCreatePound() {
+        Pound five = new Pound(5);
+        assertEquals(5, five.getAmount());
     }
 
     @Test
-    public void testMoneyMultiplication() {
-        Pound pound = new Pound(100);
-        Pound doubled = pound.multiplyPound(2);
-        assert doubled.getAmount() == 200;
-    }   
-    @Test
-    public void testPoundEquality() {
-        Pound pound1 = new Pound(5);
-        Pound pound2 = new Pound(5);
-        assert pound1.equals(pound2); 
+    void testPoundMultiplication() {
+        Pound five = new Pound(5);
+        Pound result = five.times(2);
+        assertEquals(10, result.getAmount());
     }
 
     @Test
-    public void testPoundInequality() {
-        Pound pound1 = new Pound(5);
-        Pound pound2 = new Pound(10);
-        assert !pound1.equals(pound2); 
+    void testPoundIsImmutable() {
+        Pound five = new Pound(5);
+        five.times(2);
+        assertEquals(5, five.getAmount());
     }
 
     @Test
-    public void testPoundImmutability() {
-    Pound original = new Pound(5);
-    Pound doubled = original.multiplyPound(2);
-    
-    assert original.getAmount() == 5;
-    
-    assert doubled.getAmount() == 10;
+    void testPoundEquality() {
+        assertEquals(new Pound(5), new Pound(5));
+        assertNotEquals(new Pound(5), new Pound(6));
+    }
 
-    assert original != doubled;  // Different references in memory
+    @Test
+    void testTimesReturnsNewObject() {
+        Pound five = new Pound(5);
+        Pound result = five.times(2);
+        assertNotSame(five, result);
+    }
+
 }
-}
-

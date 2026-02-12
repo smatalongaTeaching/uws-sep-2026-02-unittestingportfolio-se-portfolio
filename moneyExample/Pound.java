@@ -3,10 +3,15 @@ package moneyExample;
 public class Pound extends Money {
 
     public Pound(int amount) {
-        super(amount, "GBP");
+        super(amount);
     }
 
-    public Pound multiplyPound(int multiplier) {
-        return new Pound(getAmount() * multiplier);
+    public Pound times(int multiplier) {
+        return new Pound(amount * multiplier);
+    }
+
+    @Override
+    public String getCurrency() {
+        return "GBP";
     }
 }
