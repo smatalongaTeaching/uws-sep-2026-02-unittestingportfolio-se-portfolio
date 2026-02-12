@@ -1,9 +1,9 @@
-<<<<<<< HEAD
 # USW_SEP_UnitTesting_PortfolioExercise
 
-Pair Coursework – Test-Driven Development Portfolio.
-1.Dean Cain (B01787107)
-2.James Lough (B01794144)
+Group Coursework – Test-Driven Development Portfolio.
+1.Dean Cain (B01787107) - [https://github.com/b01787017/B01787107-DeanCain-Unit2_PortfolioExcercise.git](https://github.com/b01787017/B01787107-DeanCain-Unit2_PortfolioExcercise.git)
+2.James Lough (B01794144) -
+3.Danny Cox (B01838418) -
 
 This was completed as pair courseowkr with both contributors working on seperate feature branches, each stage was committed independently, code reviews were conducted via Pull Requests. Pull Requests were accepted or rejected based on review outcomes. Closed Pull Requests in the repository deomonstrate review activity.
 
@@ -36,7 +36,3 @@ c.Navigate to any test class.
 d.Use “Run All Tests” or run individual test methods.
 
 All tests should pass before submission.
-=======
-# B01787107-DeanCain-Unit2_PortfolioExcercise
-My person branch of the Unit 2 (Week 2 and 3) portfolio exercise (Unit Testing)
->>>>>>> 11b2f08b49b71138a22c4b5e3db8c59cddcf5d7c
