@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # USW_SEP_UnitTesting_PortfolioExercise
 
 Pair Coursework – Test-Driven Development Portfolio.
@@ -35,3 +36,7 @@ c.Navigate to any test class.
 d.Use “Run All Tests” or run individual test methods.
 
 All tests should pass before submission.
+=======
+# B01787107-DeanCain-Unit2_PortfolioExcercise
+My person branch of the Unit 2 (Week 2 and 3) portfolio exercise (Unit Testing)
+>>>>>>> 11b2f08b49b71138a22c4b5e3db8c59cddcf5d7c
