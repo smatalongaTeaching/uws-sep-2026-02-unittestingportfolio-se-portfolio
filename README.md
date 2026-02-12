@@ -3,7 +3,7 @@
 Group Coursework – Test-Driven Development Portfolio.
 1.Dean Cain (B01787107) - [https://github.com/b01787017/B01787107-DeanCain-Unit2_PortfolioExcercise.git](https://github.com/b01787017/B01787107-DeanCain-Unit2_PortfolioExcercise.git)
 2.James Lough (B01794144) -
-3.Danny Cox (B01838418) -
+3.Danny Cox (B01838418) - [https://github.com/dannydc101/smatalongateaching-uws-sep-2026-uws_sep_2026_02_unittestingportfolio-UWS_SEP_UnitTesting_PortfolioEx](https://github.com/dannydc101/smatalongateaching-uws-sep-2026-uws_sep_2026_02_unittestingportfolio-UWS_SEP_UnitTesting_PortfolioEx)
 
 This was completed as pair courseowkr with both contributors working on seperate feature branches, each stage was committed independently, code reviews were conducted via Pull Requests. Pull Requests were accepted or rejected based on review outcomes. Closed Pull Requests in the repository deomonstrate review activity.
 
